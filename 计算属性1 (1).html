@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+<div id="example">
+    <input type="text" v-model="didi" />
+    <input type="text" v-model="family" />
+    <br />
+    didi ={{didi}},family={{family}},didifamily = {{didiFamily}}
+</div>
+</body>
+<script type="text/javascript">
+    var vm = new Vue({
+        el:'#example',
+        data:{
+            didi:'didi',
+            family:'family',
+            welcome:'welcome to my family'
+        },
+        //一个计算属性
+        computed:{
+            didiFamily:{
+                //一个计算属性的getter
+                get:function () {
+                    //this指向vm的实例
+                    return this.didi+' '+this.family
+                },
+                //一个计算属性的set方法
+                set:function (newVal) {
+                    var names = newVal.split(' ')
+                    this.didi = names[0]
+                    this.family = names[1]
+                }
+            },
+            example:{
+                //关闭缓存，默认为true
+                cache:false,
+                get:function () {
+                    return Date.now()+this.welcome
+                }
+            }
+        }
+    })
+</script>
+</html>
