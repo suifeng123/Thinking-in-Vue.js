@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="vue.js"></script>
+</head>
+<body>
+<div id="example">
+<select v-model="bizLine">
+    <option v-for="option in options" :value="option.value"><!--这个value是绑定在上面的-->
+        {{option.text}}
+    </option>
+</select>
+<span>Select:{{bizLine}}</span>
+</div>
+</body>
+<script>
+    new Vue({
+        el:'#example',
+        data:{
+            bizLine:'flash',
+            options: [
+                {text:'快车',value:'flash'},
+                {text:'专车',value:'premium'},
+                {text:'巴士',value:'bus'}
+            ]
+
+        }
+
+    })
+</script>
+</html>
